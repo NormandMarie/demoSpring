@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+  <title>Liste des fruits</title>
+</head>
+<body>
+<h1>Liste des fruits</h1>
+<table>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Nom</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="fruit : ${fruits}">
+    <td th:text="${fruit.id}"></td>
+    <td th:text="${fruit.name}"></td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>
