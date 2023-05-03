@@ -6,7 +6,14 @@
 </head>
 <body>
 <h1>Liste des fruits</h1>
-<table>
+<form method="post" action="/my-fruits/saveFruit">
+  <label for="fruitName">Nom du fruit :</label>
+  <input type="text" id="fruitName" name="name" required>
+  <button type="submit">Ajouter</button>
+</form>
+
+
+  <table>
   <thead>
   <tr>
     <th>ID</th>
@@ -14,9 +21,14 @@
   </tr>
   </thead>
   <tbody>
-  <tr th:each="fruit : ${fruits}">
+  <tr th:each="fruit : ${ fruits }">
     <td th:text="${fruit.id}"></td>
-    <td th:text="${fruit.name}"></td>
+    <td th:text="${ fruit.name }"></td>
+    <td><a th:href="@{my-fruits/{id}(id=${fruit.id})}">Voir</a></td>
+    <td><a th:href="@{my-fruits/delete/{id}(id=${fruit.id})}">DELETE</a></td>
+
+    </form>
+    </td>
   </tr>
   </tbody>
 </table>

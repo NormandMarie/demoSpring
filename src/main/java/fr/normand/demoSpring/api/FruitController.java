@@ -8,10 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.lang.reflect.Array;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/fruits")
@@ -21,8 +19,8 @@ public class FruitController {
     private FruitService fruitService;
 //    private static FruitService fruitService = new FruitService();
     @GetMapping
-    public List<Fruit> all(){
-        List<Fruit> fruits = fruitService.fetchAllFruits();
+    public Optional<List<Fruit>> all(){
+        Optional<List<Fruit>> fruits = fruitService.fetchAllFruits();
         return fruits;
     }
     @GetMapping("/{id}")
@@ -34,6 +32,12 @@ public class FruitController {
             return ResponseEntity.ok(fruit);
         }
     }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteFruit(@PathVariable("id") long id) {
+        fruitService.delete(id);
+        return new ResponseEntity<>("Le fruit a été supprimé avec succès.", HttpStatus.OK);
+    }
+
     @PostMapping
    public ResponseEntity<Fruit> createFruit(@RequestBody CreateFruitRequest request) {
       String name = request.getName();

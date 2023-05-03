@@ -64,5 +64,12 @@ public class FruitJdbcRepository {
         Long fruitId = holder.getKey().longValue();
         return new Fruit(fruitId, name);
     }
-
+    public void delete(Long id) {
+            String sql = "DELETE FROM fruit WHERE id = ?";
+            jdbcTemplate.update(sql, id);
+        }
+    public Fruit update(Long id) {
+        String sql = "DELETE FROM fruit WHERE id = ?";
+        jdbcTemplate.update(sql, id);
+    }
 }
