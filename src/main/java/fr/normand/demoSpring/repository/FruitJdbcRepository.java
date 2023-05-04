@@ -68,7 +68,7 @@ public class FruitJdbcRepository {
             String sql = "DELETE FROM fruit WHERE id = ?";
             jdbcTemplate.update(sql, id);
         }
-    public Fruit update(Long id) {
+    public void update(Long id) {
         String sql = "DELETE FROM fruit WHERE id = ?";
         jdbcTemplate.update(sql, id);
     }
